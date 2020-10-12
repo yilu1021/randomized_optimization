@@ -101,17 +101,17 @@ def exp_traveling_salesperson():
     #     RandomizedHillClimbing(max_attempts=max_attemps, max_iters=max_iters, restarts=restarts,
     #                            problem=problem).solve()
 
-    # rhc = RandomizedHillClimbing(max_attempts=max_attemps, max_iters=max_iters, restarts=restarts, problem=gen_prob())
-    # rhc.solve()
-    #
-    # sa = SimulatedAnnealing(schedule=GeomDecay(), max_attempts=max_attemps, max_iters=max_iters, problem=gen_prob())
-    # sa.solve()
+    rhc = RandomizedHillClimbing(max_attempts=max_attemps, max_iters=max_iters, restarts=restarts, problem=gen_prob())
+    rhc.solve()
+
+    sa = SimulatedAnnealing(schedule=GeomDecay(), max_attempts=max_attemps, max_iters=max_iters, problem=gen_prob())
+    sa.solve()
 
     ga = GeneticAlgo(pop_size=100, mutation_prob=0.1, max_attempts=max_attemps, max_iters=max_iters, problem=gen_prob())
     ga.solve()
 
-    # mimic = MIMIC(pop_size=100, keep_pct=0.3, max_attempts=max_attemps, max_iters=max_iters, problem=gen_prob())
-    # mimic.solve()
+    mimic = MIMIC(pop_size=100, keep_pct=0.3, max_attempts=max_attemps, max_iters=max_iters, problem=gen_prob())
+    mimic.solve()
 
     plot(maximize=False, title='traveling_salesman', ros=[rhc, sa, ga, mimic])
 
@@ -123,14 +123,14 @@ def main():
     # GA
     exp_traveling_salesperson()
     #MIMIC
-    # exp_four_peak()
+    exp_four_peak()
     #SA
-    # exp_continous_peak()
+    exp_continous_peak()
     #NN
-    # exp_nn()
+    exp_nn()
 
     #continuous_peak_restarts
-    # exp_continous_peak_rhc_restarts()
+    exp_continous_peak_rhc_restarts()
 
 if __name__ == '__main__':
     main()
